@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+   
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Cards</title>
+    
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #fff;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: #1f1f1f;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-bottom: 2px solid #000000;
+}
+
+.info {
+    padding: 15px;
+}
+
+.flag {
+    font-size: 14px;
+    color: #4caf50;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 18px;
+    margin: 0;
+    color: #fff;
+}
+
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Latar belakang transparan */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Awalnya tidak terlihat */
+    transition: opacity 0.3s;
+}
+
+
+/* Reset Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background: #121212;
+    color: #fff;
+}
+
+/* Header Styling */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(90deg, #1f1f1f, #333333);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Logo Styling */
+.logo a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4caf50;
+    text-decoration: none;
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #4caf50;
+    text-shadow: 0 0 10px #4caf50;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: #1f1f1f;
+        flex-direction: column;
+        gap: 10px;
+        width: 200px;
+        padding: 20px;
+        border-radius: 10px;
+        display: none;
+    }
+
+    .navbar.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+
+
+
+
+
+
+
+
+.slideshow-container {
+            position: relative;
+            width: 80%;
+            max-width: 500px;
+            overflow: hidden;
+            border: 2px solid #fff;
+            border-radius: 10px;
+        }
+
+        .slideshow-container img {
+            width: 100%;
+            display: none;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slideshow-container img.active {
+            display: block;
+        }
+
+
+
+
+        
+
+        .parallax {
+            position: relative;
+            background-image: url('HJ.jpg');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            color: white;
+            text-align: center;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .feeds-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .feed-card {
+            background-color: #2a2a2a;
+            width: 300px;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            text-align: left;
+            transition: transform 0.3s;
+        }
+
+        .feed-card:hover {
+            transform: scale(1.05);
+        }
+
+        .feed-card h3 {
+            font-size: 18px;
+            margin: 0 0 10px;
+            color: #f39c12;
+        }
+
+        .feed-card p {
+            font-size: 14px;
+            margin: 0 0 10px;
+            color: #ccc;
+        }
+
+        .feed-card a {
+            text-decoration: none;
+            color: #1da1f2;
+            font-weight: bold;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #fff;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .comment-section {
+            width: 100%;
+            max-width: 600px;
+            background: #2f2e31;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .comment-section h3 {
+            margin: 0 0 10px;
+        }
+
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+
+        .comment-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 2px solid #eb8808;
+            border-radius: 4px;
+            resize: none;
+        }
+
+        .comment-form button {
+            align-self: flex-end;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .comment-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .comment-list {
+            margin-top: 20px;
+        }
+
+        .comment {
+            background: #1a1717;
+            border: 1px solid #f3f0f0;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .comment p {
+            margin: 0;
+            word-wrap: break-word;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #2a2a2a;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: #2bf004 0px 7px 14px;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card .info {
+            padding: 15px;
+        }
+
+        .card .info h3 {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        .card .info p {
+            margin: 0;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .card .info .new-line {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .flag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: white;
+            color: black;
+            padding: 3px 5px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+   
+    <div class="parallax">
+        <div class="content">
+            <h1 style="color: rgb(255, 255, 255);">WELCOME TO MY RAVENS WEB</h1>
+            <p style="color: rgb(255, 255, 255);">Scroll down to see another content.</p>
+        </div>
+    </div>
+
+
+<!-- Header -->
+<header class="main-header">
+    <div class="logo">
+        <a href="#">MyBrand</a>
+    </div>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</header>
+
+<!-- Content -->
+<section id="home">
+    <h1>Welcome to My Website</h1>
+    <p>Explore the amazing features we offer!</p>
+</section>
+
+
+
+<!-- Header -->
+
+
+
+    <div class="container">
+        <!-- Card 1 -->
+        <div class="card">
+            <div class="flag">INDONESIA</div>
+            <img src="Mobile_Legends_5v5_Logo_Fair_MOBA_for_Mobile.JPG.webp" alt="Mobile Legends">
+            <div class="info">
+                <h3>Mobile Legends</h3>
+                <p>MOBA</p>
+                <div class="new-line">GAME</div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+         <div class="card">
+            <div class="flag">INDONESIA</div>
+            <a href=""> <img src="59910-magic-chess-mobile-legends.jpg" alt="Magic Chess"></a>
+            <div class="info">
+                <h3>Magic Chess</h3>
+                <p>Strategy</p>
+                <div class="new-line">GAME</div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <div class="flag">INDONESIA</div>
+            <img src="garena-free-fire-6589783_960_720.webp" alt="Free Fire">
+            <div class="info">
+                <h3>Free Fire</h3>
+                <p>Battle Royale</p>
+                <div class="new-line">GAME</div>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+            <div class="flag">INDONESIA</div>
+            <img src="unnamed.png" alt="PUBG Mobile">
+            <div class="info">
+                <h3>PUBG Mobile</h3>
+                <p>Battleground</p>
+                <div class="new-line">GAME</div>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card">
+            <div class="flag">INDONESIA</div>
+            <img src="jn.png" alt="Clash of Clans">
+            <div class="info">
+                <h3>Clash of Clans</h3>
+                <p>Kingdom</p>
+                <div class="new-line">GAME</div>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+<div class="card">
+    <div class="flag">INDONESIA</div>
+    <img src="Valorant_cover.jpg" alt="New Game">
+    <div class="info">
+        <h3>Valorant</h3>
+        <p>Battleground</p>
+        <div class="new-line">GAME</div>
+    </div>
+</div>
+
+<!-- Card 6 -->
+<div class="card">
+    <div class="flag">INDONESIA</div>
+    <img src="images.jpeg" alt="Honor Of King">
+    <div class="info">
+        <h3>Honor Of Kings</h3>
+        <p>MOBA</p>
+        <div class="new-line">GAME</div>
+    </div>
+</div>
+<div class="slideshow-container">
+    <img src="naga.png" alt="Gambar 1" class="active">
+    <img src="anime Gojo Satoru.png" alt="Gambar 2">
+    <img src="modern gaming theme background.png" alt="Gambar 3">
+    <img src="anime Badass.png" alt="Gambar 4">
+</div>
+</div>
+
+    <!-- New Content Section -->
+    <section id="new-content">
+        <h1>Social Media Feeds</h1>
+<div class="feeds-container" id="feeds-container">
+    <!-- Feeds akan dimuat secara dinamis -->
+</div>
+    </section>
+
+    <div class="comment-section">
+        <h3>Bagikan Komentar Anda</h3>
+        <form class="comment-form" id="commentForm">
+            <textarea id="commentInput" rows="4" placeholder="Tulis komentar Anda di sini..." required></textarea>
+            <button type="submit">Kirim</button>
+        </form>
+        <div class="comment-list" id="commentList">
+            <!-- Komentar akan ditambahkan di sini -->
+        </div>
+    </div>
+
+    <script>
+
+
+const commentForm = document.getElementById('commentForm');
+        const commentInput = document.getElementById('commentInput');
+        const commentList = document.getElementById('commentList');
+
+        // Fungsi untuk menangani pengiriman komentar
+        commentForm.addEventListener('submit', function (event) {
+            event.preventDefault(); // Mencegah reload halaman
+
+            const commentText = commentInput.value.trim(); // Mengambil teks komentar
+            if (commentText) {
+                addComment(commentText); // Tambahkan komentar ke daftar
+                commentInput.value = ''; // Kosongkan textarea
+            }
+        });
+
+        // Fungsi untuk menambahkan komentar ke dalam daftar
+        function addComment(text) {
+            const commentElement = document.createElement('div');
+            commentElement.classList.add('comment');
+            commentElement.innerHTML = `<p>${text}</p>`;
+            commentList.appendChild(commentElement); // Tambahkan komentar ke daftar
+        }
+
+
+const socialFeeds = [
+        {
+            platform: 'Twitter',
+            username: '@WeRavens',
+            content: 'Check out the latest updates on AI and our projects!',
+            link: 'https://twitter.com/openai'
+        },
+        {
+            platform: 'Instagram',
+            username: '@WeRavens',
+            content: 'Explore our recent photos and events on Instagram!',
+            link: 'https://instagram.com/openai'
+        },
+        {
+            platform: 'Facebook',
+            username: 'WeRavens',
+            content: 'Join our community on Facebook to discuss AI innovations.',
+            link: 'https://facebook.com/openai'
+        }
+    ];
+
+    // Fungsi untuk membuat elemen feed
+    function renderFeeds() {
+        const container = document.getElementById('feeds-container');
+
+        socialFeeds.forEach(feed => {
+            const feedCard = document.createElement('div');
+            feedCard.classList.add('feed-card');
+
+            feedCard.innerHTML = `
+                <h3>${feed.platform}</h3>
+                <p><strong>${feed.username}</strong>: ${feed.content}</p>
+                <a href="${feed.link}" target="_blank">Read more</a>
+            `;
+
+            container.appendChild(feedCard);
+        });
+    }
+
+    // Panggil fungsi saat halaman dimuat
+    renderFeeds();
+        const hamburger = document.querySelector('.hamburger');
+const navbar = document.querySelector('.navbar');
+
+hamburger.addEventListener('click', () => {
+    navbar.classList.toggle('active');
+});
+
+
+// Mendapatkan semua elemen gambar
+const images = document.querySelectorAll('.slideshow-container img');
+        let currentIndex = 0;
+
+        // Fungsi untuk mengganti gambar
+        function showNextImage() {
+            // Menghapus kelas "active" dari gambar saat ini
+            images[currentIndex].classList.remove('active');
+
+            // Menambahkan kelas "active" ke gambar berikutnya
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }
+
+        // Menjalankan fungsi setiap 3 detik
+        setInterval(showNextImage, 3000);
+    </script>
+
+</body>
+</html>
